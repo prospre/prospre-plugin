@@ -25,7 +25,7 @@ Synced from the server. Every tool carries a `title`, `readOnlyHint`, `destructi
 | Name | `Prospre` |
 | One-liner (<= 200) | `Log food by talking, plan the week from what you ate, and keep your macros, grocery list and weight in Prospre.` |
 | Description (<= 2000) | See below |
-| Categories | Health & Fitness; Productivity (pick the closest names the portal offers) |
+| Categories | Productivity (pick the closest name the portal offers) |
 | Documentation URL | `https://www.prospre.io/mcp-server` |
 | Privacy policy URL | `https://www.prospre.io/privacy-policy` |
 | Support contact | the support address shown at `https://www.prospre.io/support` |
