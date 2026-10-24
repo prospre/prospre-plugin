@@ -16,7 +16,7 @@
         "shortDescription": "Meal plans and macro tracking",
         "longDescription": "Prospre is a meal planning and macro tracking app. Connect it and ChatGPT works in your own account. Describe a day and ChatGPT finds each food, picks sensible amounts and logs it to the right meals. Ask for next week and ChatGPT plans it from your real averages and adherence, keeping the breakfasts you clearly like and fixing your protein. Correct the diary after the fact: amounts, units and whether a meal was eaten are all editable. Read the grocery list your planned meals generated and tick things off as you shop, or turn it into an Instacart or Amazon Fresh order. Review your weigh-ins against your goal and move your calorie and macro targets from the day you choose. Every tool is listed with its description at prospre.io/mcp-server, and the ones that change your data are marked. A Prospre account is required.",
         "developerName": "Prospre",
-        "category": "Healthcare",
+        "category": "Productivity",
         "capabilities": [
           "Log a whole day of food from a spoken or typed description",
           "Plan the coming week from the last two weeks of real intake",

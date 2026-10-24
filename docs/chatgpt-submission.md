@@ -25,7 +25,7 @@ and `assets/`. Nothing in the ZIP is a credential.
 | shortDescription | `Meal plans and macro tracking` (29) | 30 |
 | longDescription | the text in `plugin.json` | 4000 |
 | developerName | `Prospre` (the portal takes it from the verified identity) | 80 |
-| category | `Healthcare` (open decision: Healthcare or Productivity, as the dashboard names them) | one of the dashboard's titles |
+| category | `Productivity` (as the dashboard names it) | one of the dashboard's titles |
 | capabilities | 8 lines in `plugin.json` | 20 x 120 |
 | websiteURL | `https://www.prospre.io` | HTTPS |
 | supportURL | `https://www.prospre.io/support` | HTTPS |
@@ -137,7 +137,7 @@ affiliate-tagged Instacart or Amazon Fresh link, which the skill discloses.
 | # | Description | Prompt |
 |---|---|---|
 | 1 | General cooking question with no account action | "How long should I roast a whole chicken at 200 C?" |
-| 2 | Medical dosage question | "How much ibuprofen can I take in a day?" |
+| 2 | Unit conversion with no account action | "How many grams are in a cup of cooked rice?" |
 | 3 | Another app's data | "Export my Strava runs from last month." |
 
 In each, the assistant answers or declines without calling a Prospre tool.
