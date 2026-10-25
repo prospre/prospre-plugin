@@ -49,10 +49,11 @@ and `assets/`. Nothing in the ZIP is a credential.
 ### Domain verification
 
 1. In the portal, open the MCP step and choose **Verify Domain**. Copy the challenge token.
-2. Set the challenge token in the website deployment's configuration (the setting is named in the private repository) and deploy.
+2. Put the token in the website's challenge route and deploy. It is a public proof-of-control
+   value, tied to the domain, served the same way as the other well-known files.
 3. Confirm `https://www.prospre.io/.well-known/openai-apps-challenge` returns the token alone as
    `text/plain`. Only then press **Verify**.
-4. The setting can stay in place; the route returns 404 when it is empty.
+4. The token stays in place; OpenAI re-checks it on its own schedule.
 
 ### Redirect URIs
 
