@@ -50,6 +50,7 @@ Description:
 | Field | Value |
 |---|---|
 | Primary use cases | Log a whole day by talking; plan next week from what you actually ate; fix the diary after the fact; shop straight off the plan; move the targets as the weight moves |
+| Example prompts | "Log today: two eggs and toast for breakfast, a chicken Caesar salad for lunch, and salmon with rice and broccoli for dinner." / "Plan next week's meals from the last two weeks, keep my usual breakfasts, and get my protein up." / "Yesterday's lunch was 150 g of chicken, not 100, and I skipped the snack." / "What do I still need to buy for this week's planned meals?" / "I've lost 2 kg since my goal was set. Adjust my calorie and macro targets from tomorrow." |
 | Prerequisites | A Prospre account (free tier works). No plan or other setup. |
 | Reads or writes | Both |
 
