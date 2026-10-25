@@ -1,0 +1,16 @@
+{
+  "name": "prospre",
+  "displayName": "Prospre",
+  "version": "1.0.0",
+  "description": "Log food by talking, plan the week from what you actually ate, fix the diary, shop off the plan, and move your targets as your weight moves, all in your Prospre account.",
+  "author": { "name": "Prospre", "url": "https://www.prospre.io" },
+  "homepage": "https://www.prospre.io/mcp-server",
+  "repository": "https://github.com/prospre/prospre-plugin",
+  "license": "MIT",
+  "keywords": ["prospre", "meal planning", "macro tracking", "food diary", "nutrition"],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://www.prospre.io/mcp-server",
+  "supportUrl": "https://www.prospre.io/support",
+  "privacyPolicyUrl": "https://www.prospre.io/privacy-policy",
+  "termsOfServiceUrl": "https://www.prospre.io/terms-of-service"
+}

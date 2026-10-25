@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "prospre": {
+      "type": "http",
+      "url": "https://www.prospre.io/mcp"
+    }
+  }
+}
