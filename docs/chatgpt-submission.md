@@ -85,14 +85,14 @@ Every tool declares all three hints. Justifications, in case the scan asks:
 | search_foods | true | false | false | Searches Prospre's own food database, a bounded set |
 | search_recipes | true | false | false | Searches Prospre's own recipe collection |
 | get_grocery_list | true | false | false | Reads the list as generated in the app |
-| get_grocery_order_link | true | false | true | Changes nothing in Prospre, but sends list items to Instacart or Amazon Fresh to build a link |
+| get_grocery_order_link | false | false | true | Changes nothing in Prospre, but sends list items to Instacart or Amazon Fresh, which builds a cart link: a side effect outside Prospre |
 | log_food | false | false | false | Adds a diary entry; nothing is removed |
 | log_saved_meal | false | false | false | Adds entries |
 | edit_logged_food | false | true | false | Overwrites an entry's amount, unit or eaten flag |
 | replace_logged_food | false | true | false | Removes one entry and adds another |
 | set_meal_eaten | false | false | false | Flips eaten flags; reversible, idempotent |
 | delete_logged_food | false | true | false | Removes an entry |
-| set_water | false | false | false | Sets a day's total; idempotent |
+| set_water | false | true | false | Overwrites a day's total; idempotent |
 | create_custom_food | false | false | false | Creates a food |
 | create_recipe | false | false | false | Creates a recipe |
 | save_recipe | false | false | false | Adds a bookmark |
@@ -102,14 +102,18 @@ Every tool declares all three hints. Justifications, in case the scan asks:
 | edit_saved_meal | false | true | false | Replaces the meal's contents |
 | delete_saved_meal | false | true | false | Removes the saved meal |
 | set_grocery_items_bought | false | false | false | Flips bought flags; idempotent |
-| log_weight | false | false | false | Records or replaces one day's weigh-in |
+| log_weight | false | true | false | Records or replaces one day's weigh-in |
 | delete_weigh_in | false | true | false | Removes a weigh-in |
 | set_weight_goal | false | false | false | Sets the goal from a date; earlier goals stay |
 | set_nutrient_targets | false | true | false | Sets targets from a date and deletes later scheduled ones |
-| set_food_preferences | false | false | false | Replaces preference lists; removing an allergy needs proof of the current list |
-| set_personal_info | false | false | false | Updates profile fields; idempotent |
+| set_food_preferences | false | true | false | Replaces preference lists; removing an allergy needs proof of the current list |
+| set_personal_info | false | true | false | Overwrites profile fields; idempotent |
 
 ## Review details
+
+The test cases, `commerce` and the release notes are in `plugin.json` under
+`extensions.com.openai.review` and `.publication`, and the portal imports them from the ZIP;
+they are read-only in the dashboard, so change them here and upload again.
 
 Reviewer account: the email and password the maintainer creates (no MFA, no magic links), entered
 under **Review information → Review details**, never in the ZIP. The account holds two weeks

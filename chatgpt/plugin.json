@@ -3,11 +3,20 @@
   "name": "prospre",
   "version": "1.0.0",
   "description": "Log food by talking, plan the week from what you actually ate, fix the diary, shop off the plan, and move your targets as your weight moves, all in your Prospre account.",
-  "author": { "name": "Prospre", "url": "https://www.prospre.io" },
+  "author": {
+    "name": "Prospre",
+    "url": "https://www.prospre.io"
+  },
   "homepage": "https://www.prospre.io/mcp-server",
   "repository": "https://github.com/prospre/prospre-plugin",
   "license": "MIT",
-  "keywords": ["prospre", "meal planning", "macro tracking", "food diary", "nutrition"],
+  "keywords": [
+    "prospre",
+    "meal planning",
+    "macro tracking",
+    "food diary",
+    "nutrition"
+  ],
   "extensions": {
     "com.openai": {
       "onboardingSkill": "./skills/setup/SKILL.md",
@@ -40,6 +49,60 @@
         "brandColorDark": "#603EDA",
         "composerIcon": "./assets/icon.png",
         "logo": "./assets/logo.png"
+      },
+      "review": {
+        "commerce": false,
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Log a day by talking",
+              "prompt": "Log my day: porridge with blueberries and a scoop of whey for breakfast, a chicken burrito bowl for lunch, two black coffees.",
+              "tools_triggered": "get_app_settings, get_recent_foods, search_foods, log_food, get_food_log",
+              "expected_behavior": "Each food is found, logged to breakfast or lunch for today with a stated amount, and the day's totals are shown against target."
+            },
+            {
+              "description": "Plan next week from what was eaten",
+              "prompt": "Look at the last two weeks and plan next week around it. Keep the breakfasts I clearly like and fix my protein.",
+              "tools_triggered": "analyze_range, get_nutrient_targets, get_food_preferences, get_saved_meals, get_saved_recipes, log_saved_meal, log_food",
+              "expected_behavior": "A seven-day plan is written to the future diary with eaten false, repeats the frequent breakfasts, avoids allergens, and meets protein."
+            },
+            {
+              "description": "Fix the diary after the fact",
+              "prompt": "I only ate half that burrito bowl, and skip dinner yesterday, I never had it.",
+              "tools_triggered": "get_food_log, edit_logged_food, set_meal_eaten",
+              "expected_behavior": "The burrito bowl's amount is halved and yesterday's dinner is marked not eaten; corrected totals are shown."
+            },
+            {
+              "description": "Log a weigh-in and read the trend",
+              "prompt": "I weighed 82.4 kg this morning. How am I tracking against my goal?",
+              "tools_triggered": "get_app_settings, log_weight, get_weight_history, get_weight_goal",
+              "expected_behavior": "The weigh-in is recorded for today in the account's unit, and the change since the goal's start is compared with the goal's target and date."
+            },
+            {
+              "description": "Move the targets as the weight moves",
+              "prompt": "I have been flat for three weeks. Adjust my calories from Monday.",
+              "tools_triggered": "get_weight_history, get_weight_goal, get_nutrient_targets, analyze_range, set_nutrient_targets",
+              "expected_behavior": "The trend and intake are read out, a moderate change is proposed and confirmed, and the targets are set from the coming Monday with a note that later scheduled targets are superseded."
+            }
+          ],
+          "negative": [
+            {
+              "description": "General cooking question with no account action",
+              "prompt": "How long should I roast a whole chicken at 200 C?"
+            },
+            {
+              "description": "Unit conversion with no account action",
+              "prompt": "How many grams are in a cup of cooked rice?"
+            },
+            {
+              "description": "Another app's data",
+              "prompt": "Export my Strava runs from last month."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "release_notes": "Version 1.0.0. First release: six skills (setup, log-day, plan-week, fix-diary, shop, adjust-targets) over Prospre's MCP server with OAuth."
       }
     }
   }
