@@ -82,7 +82,7 @@ Description:
 
 Reviewer account: the email and password the maintainer creates for the reviewer (not stored in this
 repository; see the private handover). The account has no MFA and holds two weeks of diary
-with planned and eaten meals, saved meals, saved recipes, custom foods, a grocery list, a
+with planned and eaten meals, saved meals, saved recipes, custom foods, a
 weight goal with weigh-ins, and nutrient targets.
 
 Connect instructions for the reviewer:

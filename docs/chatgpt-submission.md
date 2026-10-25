@@ -112,7 +112,7 @@ Every tool declares all three hints. Justifications, in case the scan asks:
 
 Reviewer account: the email and password the maintainer creates (no MFA, no magic links), entered
 under **Review information → Review details**, never in the ZIP. The account holds two weeks
-of diary, saved meals, saved recipes, custom foods, a grocery list, a weight goal with
+of diary, saved meals, saved recipes, custom foods, a weight goal with
 weigh-ins and nutrient targets.
 
 Sign-in instructions for the reviewer: choose Connect on the Prospre plugin, enter the
