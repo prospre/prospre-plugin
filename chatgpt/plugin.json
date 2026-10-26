@@ -62,7 +62,7 @@
             },
             {
               "description": "Plan next week from what was eaten",
-              "prompt": "Look at the last two weeks and plan next week around it. Keep the breakfasts I clearly like and fix my protein.",
+              "prompt": "Look at the last two weeks and plan next week around it. Keep the breakfasts I clearly like and fix my protein. Put the plan in my diary.",
               "tools_triggered": "analyze_range, get_nutrient_targets, get_food_preferences, get_saved_meals, get_saved_recipes, log_saved_meal, log_food",
               "expected_behavior": "A seven-day plan is written to the future diary with eaten false, repeats the frequent breakfasts, avoids allergens, and meets protein."
             },
@@ -80,9 +80,9 @@
             },
             {
               "description": "Move the targets as the weight moves",
-              "prompt": "I have been flat for three weeks. Adjust my calories from Monday.",
+              "prompt": "I am losing a bit faster than I planned. Raise my calories from Monday.",
               "tools_triggered": "get_weight_history, get_weight_goal, get_nutrient_targets, analyze_range, set_nutrient_targets",
-              "expected_behavior": "The trend and intake are read out, a moderate change is proposed and confirmed, and the targets are set from the coming Monday with a note that later scheduled targets are superseded."
+              "expected_behavior": "The trend and intake are read out, a moderate increase is proposed and confirmed, and the targets are set from the coming Monday with a note that later scheduled targets are superseded."
             }
           ],
           "negative": [
