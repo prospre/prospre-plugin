@@ -74,7 +74,7 @@
             },
             {
               "description": "Log a weigh-in and read the trend",
-              "prompt": "I weighed 82.4 kg this morning. How am I tracking against my goal?",
+              "prompt": "I weighed 82.9 kg this morning. How am I tracking against my goal?",
               "tools_triggered": "get_app_settings, log_weight, get_weight_history, get_weight_goal",
               "expected_behavior": "The weigh-in is recorded for today in the account's unit, and the change since the goal's start is compared with the goal's target and date."
             },
