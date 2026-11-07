@@ -15,6 +15,7 @@ the files in this repository.
   to a new user.
 - `.claude-plugin/plugin.json` is the plugin manifest.
 - `chatgpt/` holds the manifest and build script for the ChatGPT package.
+- `mcp-registry/server.json` is the listing for the official MCP registry (`docs/mcp-registry.md`).
 - `docs/` holds the submission notes for each directory.
 
 The plugin is Markdown and JSON only. It runs no scripts, installs no packages and sets no hooks.
