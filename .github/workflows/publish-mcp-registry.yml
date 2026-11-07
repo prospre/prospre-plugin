@@ -1,0 +1,46 @@
+# Publishes mcp-registry/server.json to the official MCP registry (registry.modelcontextprotocol.io) as
+# io.prospre/prospre. Run by hand (Actions > publish-mcp-registry > Run workflow); to update the listing, bump
+# "version" in server.json first. Decided: Colin, 2026-11-07: "the prospre listing should be in the prospre repo or
+# done from there".
+#
+# Proof of the io.prospre namespace is DNS: a TXT record at the apex of prospre.io ("v=MCPv1; k=ed25519; p=<public key>")
+# and the matching Ed25519 private key in secrets.MCP_PUBLISHER_KEY (hex). It is the one key for the domain, the same
+# secret as in prospre/nutrition-intelligence, and is never printed. Without the record the login fails with
+# "no MCP public key found in DNS TXT records".
+name: publish-mcp-registry
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Pinned to one release and checked against its published sha256 before anything runs beside the private key.
+      # To move: pick the new tag, take mcp-publisher_linux_amd64.tar.gz's line from registry_<version>_checksums.txt.
+      - name: install mcp-publisher 1.8.8 (sha256-verified)
+        env:
+          MCP_PUBLISHER_VERSION: v1.8.8
+          MCP_PUBLISHER_SHA256: 09f1fa70ee146b640584274a1a6b2b8a0310b05d4321fa9224e6df6a016d67f4
+        run: |
+          set -eu
+          curl -fsSL -o mcp-publisher.tar.gz "https://github.com/modelcontextprotocol/registry/releases/download/$MCP_PUBLISHER_VERSION/mcp-publisher_linux_amd64.tar.gz"
+          echo "$MCP_PUBLISHER_SHA256  mcp-publisher.tar.gz" | sha256sum -c -
+          tar xzf mcp-publisher.tar.gz mcp-publisher
+          sudo mv mcp-publisher /usr/local/bin/
+          mcp-publisher --version
+      - name: validate server.json
+        working-directory: mcp-registry
+        run: mcp-publisher validate
+      - name: log in with DNS proof of prospre.io
+        working-directory: mcp-registry
+        env:
+          MCP_PUBLISHER_KEY: ${{ secrets.MCP_PUBLISHER_KEY }}
+        run: |
+          set -eu
+          test -n "$MCP_PUBLISHER_KEY" || { echo "::error::secrets.MCP_PUBLISHER_KEY is not set"; exit 1; }
+          mcp-publisher login dns --domain prospre.io --private-key "$MCP_PUBLISHER_KEY"
+      - name: publish
+        working-directory: mcp-registry
+        run: mcp-publisher publish
