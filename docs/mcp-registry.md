@@ -11,15 +11,14 @@ website, repository and the server URL.
 
 The namespace `io.prospre` is proved by DNS: a TXT record at the apex of `prospre.io`
 (`v=MCPv1; k=ed25519; p=<public key>`) and the matching Ed25519 private key. One key serves the
-whole domain. That key exists only as the GitHub Actions secret `MCP_PUBLISHER_KEY` in
-`prospre/nutrition-intelligence`; it was generated there on 2026-11-07 and never printed, so it
-cannot be copied into this repository. This listing is therefore published by that repository's
-manual workflow, `publish-mcp-registry`, run with the `listing` input set to `prospre`: it checks
-out this repository (public) at `main`, validates `mcp-registry/server.json`, logs in with the DNS
-proof and publishes.
+whole domain; it is the GitHub Actions secret `MCP_PUBLISHER_KEY` in this repository (the same
+secret as in `prospre/nutrition-intelligence`, never printed). The manual workflow
+`.github/workflows/publish-mcp-registry.yml` installs a pinned, sha256-checked `mcp-publisher`
+1.8.8, validates `mcp-registry/server.json`, logs in with the DNS proof and publishes
+(Colin, 2026-11-07: "the prospre listing should be in the prospre repo or done from there").
 
 ```
-gh workflow run publish-mcp-registry -R prospre/nutrition-intelligence -f listing=prospre
+gh workflow run publish-mcp-registry -R prospre/prospre-plugin
 ```
 
 To update the listing, change `server.json` on `main`, bump `version`, and run the workflow again.
